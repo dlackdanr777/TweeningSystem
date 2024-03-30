@@ -17,14 +17,26 @@ namespace Muks.Tween
         public override void SetData(DataSequence dataSequence)
         {
             base.SetData(dataSequence);
-            if(TryGetComponent(out _canvasGroup))
+
+            if (_canvasGroup == null)
+            {
+                if (!TryGetComponent(out _canvasGroup))
+                {
+                    Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
+                    enabled = false;
+                    return;
+                }
+            }
+
+
+            if (TryGetComponent(out _canvasGroup))
             {
                 TargetAlpha = (float)dataSequence.TargetValue;
                 StartAlpha = _canvasGroup.alpha;
             }
             else
             {
-                Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
+
             }
         }
 

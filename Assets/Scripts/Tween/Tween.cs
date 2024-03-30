@@ -68,8 +68,9 @@ namespace Muks.Tween
         /// <summary>목표 값으로 지속 시간동안 오브젝트를 이동시키는 함수</summary>
         public static TweenData TransformMove(Component target, Vector3 targetPosition, float duration, TweenMode tweenMode = TweenMode.Constant)
         {
-            if (!target.TryGetComponent(out TweenTransformMove tweenData))
-                tweenData = target.gameObject.AddComponent<TweenTransformMove>();
+            TweenTransformMove tweenData = target.GetComponent<TweenTransformMove>() != null ?
+                target.GetComponent<TweenTransformMove>()
+                : target.gameObject.AddComponent<TweenTransformMove>();
 
             DataSequence tmpData = new DataSequence();
             tmpData.TargetValue = targetPosition;

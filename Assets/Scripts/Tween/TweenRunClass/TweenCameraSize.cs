@@ -18,15 +18,18 @@ namespace Muks.Tween
         {
             base.SetData(dataSequence);
 
-            if (TryGetComponent(out _camera))
+            if (_camera == null)
             {
-                StartSize = _camera.orthographicSize;
-                TargetSize = (float)dataSequence.TargetValue;
+                if (!TryGetComponent(out _camera))
+                {
+                    Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
+                    enabled = false;
+                    return;
+                }
             }
-            else
-            {
-                Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
-            }
+
+            StartSize = _camera.orthographicSize;
+            TargetSize = (float)dataSequence.TargetValue;
         }
 
 

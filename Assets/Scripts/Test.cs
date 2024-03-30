@@ -10,7 +10,28 @@ public class Test : MonoBehaviour
 
     void Start()
     {
-        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 2, TweenMode.Constant).OnUpdate(OnUpdated1).OnComplete(OnCompleted1).Loop(LoopType.Yoyo);
+        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
+        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
     }
 
 
