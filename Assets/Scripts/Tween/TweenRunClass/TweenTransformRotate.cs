@@ -1,24 +1,19 @@
-
-using TMPro;
 using UnityEngine;
 
 namespace Muks.Tween
 {
     public class TweenTransformRotate : TweenData
     {
-        /// <summary> 목표 회전 값 </summary>
-        public Vector3 TargetEulerAngles;
-
-        /// <summary> 시작 회전 값</summary>
-        public Vector3 StartEulerAngles;
+        private Vector3 _startEulerAngles;
+        private Vector3 _targetEulerAngles;
 
 
         public override void SetData(DataSequence dataSequence)
         {
             base.SetData(dataSequence);
 
-            StartEulerAngles = transform.eulerAngles;
-            TargetEulerAngles = (Vector3)dataSequence.TargetValue;
+            _startEulerAngles = transform.eulerAngles;
+            _targetEulerAngles = (Vector3)dataSequence.TargetValue;
         }
 
 
@@ -28,14 +23,14 @@ namespace Muks.Tween
 
             float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
 
-            transform.eulerAngles = Vector3.LerpUnclamped(StartEulerAngles, TargetEulerAngles, percent);
+            transform.eulerAngles = Vector3.LerpUnclamped(_startEulerAngles, _targetEulerAngles, percent);
         }
 
 
         protected override void TweenCompleted()
         {
             if (TweenMode != TweenMode.Spike)
-                transform.eulerAngles = TargetEulerAngles;
+                transform.eulerAngles = _targetEulerAngles;
         }
     }
 }

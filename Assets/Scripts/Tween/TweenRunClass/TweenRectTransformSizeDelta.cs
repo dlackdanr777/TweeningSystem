@@ -1,20 +1,11 @@
-
 using UnityEngine;
-
 
 namespace Muks.Tween
 {
-    /// <summary>
-    /// Recttransform의 width와 height를 조절하는 Tween
-    /// </summary>
     public class TweenRectTransformSizeDelta : TweenData
     {
-        /// <summary> 목표 회전 값 </summary>
-        public Vector2 TargetSizeDelta;
-
-        /// <summary> 시작 회전 값</summary>
-        public Vector2 StartSizeDelta;
-
+        private Vector2 _startSizeDelta;
+        private Vector2 _targetSizeDelta;
         private RectTransform _rectTransform;
 
 
@@ -40,8 +31,8 @@ namespace Muks.Tween
 
             float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
 
-            float width = Mathf.LerpUnclamped(StartSizeDelta.x, TargetSizeDelta.x, percent);
-            float height = Mathf.LerpUnclamped(StartSizeDelta.y, TargetSizeDelta.y, percent);
+            float width = Mathf.LerpUnclamped(_startSizeDelta.x, _targetSizeDelta.x, percent);
+            float height = Mathf.LerpUnclamped(_startSizeDelta.y, _targetSizeDelta.y, percent);
             _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
             _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
         }
@@ -51,8 +42,8 @@ namespace Muks.Tween
         {
             if (TweenMode != TweenMode.Spike)
             {
-                _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, TargetSizeDelta.x);
-                _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, TargetSizeDelta.y);
+                _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _targetSizeDelta.x);
+                _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _targetSizeDelta.y);
             }  
         }
     }

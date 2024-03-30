@@ -5,10 +5,10 @@ namespace Muks.Tween
 {
     public class TweenLayoutGroupSpacing : TweenData
     {
-        public float StartValue;
-        public float TargetValue;
-
+        private float _startValue;
+        private float _targetValue;
         private HorizontalOrVerticalLayoutGroup _layoutGroup;
+
 
         public override void SetData(DataSequence dataSequence)
         {
@@ -32,14 +32,14 @@ namespace Muks.Tween
 
             float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
 
-            _layoutGroup.spacing = Mathf.LerpUnclamped(StartValue, TargetValue, percent);
+            _layoutGroup.spacing = Mathf.LerpUnclamped(_startValue, _targetValue, percent);
         }
 
 
         protected override void TweenCompleted()
         {
             if (TweenMode != TweenMode.Spike)
-                _layoutGroup.spacing = TargetValue;
+                _layoutGroup.spacing = _targetValue;
         }
     }
 }

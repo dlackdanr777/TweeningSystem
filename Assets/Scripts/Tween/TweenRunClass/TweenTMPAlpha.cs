@@ -1,20 +1,15 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Muks.Tween
 {
     public class TweenTMPAlpha : TweenData
     {
-        /// <summary> 목표 위치 </summary>
-        public Color TargetColor;
-
-        /// <summary> 시작 위치</summary>
-        public Color StartColor;
-
-        public float TargetAlpha;
-
+        private Color _startColor;
+        private Color _targetColor;
+        private float _targetAlpha;
         private TextMeshProUGUI _text;
+
 
         public override void SetData(DataSequence dataSequence)
         {
@@ -30,11 +25,12 @@ namespace Muks.Tween
                 }
             }
 
-            TargetAlpha = (float)dataSequence.TargetValue;
-            StartColor = _text.color;
-            TargetColor = _text.color;
-            TargetColor.a = TargetAlpha;
+            _targetAlpha = (float)dataSequence.TargetValue;
+            _startColor = _text.color;
+            _targetColor = _text.color;
+            _targetColor.a = _targetAlpha;
         }
+
 
         protected override void Update()
         {
@@ -42,14 +38,14 @@ namespace Muks.Tween
 
             float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
             
-            _text.color = Color.LerpUnclamped(StartColor, TargetColor, percent);
+            _text.color = Color.LerpUnclamped(_startColor, _targetColor, percent);
         }
 
 
         protected override void TweenCompleted()
         {
             if (TweenMode != TweenMode.Spike)
-                _text.color = TargetColor;
+                _text.color = _targetColor;
         }
     }
 }

@@ -1,20 +1,11 @@
-
 using UnityEngine;
-
 
 namespace Muks.Tween
 {
-    /// <summary>
-    /// Recttransform의 앵커를 기준으로 위치이동 애니메이션을 실행하는 함수
-    /// </summary>
     public class TweenRectTransformAnchoredPosition : TweenData
     {
-        /// <summary> 목표 회전 값 </summary>
-        public Vector3 TargetAnchoredPosition;
-
-        /// <summary> 시작 회전 값</summary>
-        public Vector3 StartAnchoredPosition;
-
+        private Vector3 _startAnchoredPosition;
+        private Vector3 _targetAnchoredPosition;
         private RectTransform _rectTransform;
 
 
@@ -32,8 +23,8 @@ namespace Muks.Tween
                 }
             }
 
-            StartAnchoredPosition = _rectTransform.anchoredPosition;
-            TargetAnchoredPosition = (Vector2)dataSequence.TargetValue;
+            _startAnchoredPosition = _rectTransform.anchoredPosition;
+            _targetAnchoredPosition = (Vector2)dataSequence.TargetValue;
         }
 
 
@@ -43,14 +34,14 @@ namespace Muks.Tween
 
             float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
 
-            _rectTransform.anchoredPosition = Vector3.LerpUnclamped(StartAnchoredPosition, TargetAnchoredPosition, percent);
+            _rectTransform.anchoredPosition = Vector3.LerpUnclamped(_startAnchoredPosition, _targetAnchoredPosition, percent);
         }
 
 
         protected override void TweenCompleted()
         {
             if (TweenMode != TweenMode.Spike)
-                _rectTransform.anchoredPosition = TargetAnchoredPosition;
+                _rectTransform.anchoredPosition = _targetAnchoredPosition;
         }
     }
 }

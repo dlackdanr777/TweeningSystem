@@ -1,23 +1,18 @@
-
 using UnityEngine;
 
 namespace Muks.Tween
 {
     public class TweenTransformScale : TweenData
     {
-
-        /// <summary> 시작 회전 값</summary>
-        public Vector3 StartScale;
-
-        /// <summary> 목표 회전 값 </summary>
-        public Vector3 TargetScale;
+        private Vector3 _startScale;
+        private Vector3 _targetScale;
 
 
         public override void SetData(DataSequence dataSequence)
         {
             base.SetData(dataSequence);
-            StartScale = transform.localScale;
-            TargetScale = (Vector3)dataSequence.TargetValue;
+            _startScale = transform.localScale;
+            _targetScale = (Vector3)dataSequence.TargetValue;
         }
 
 
@@ -27,14 +22,14 @@ namespace Muks.Tween
 
             float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
 
-            transform.localScale = Vector3.LerpUnclamped(StartScale, TargetScale, percent);
+            transform.localScale = Vector3.LerpUnclamped(_startScale, _targetScale, percent);
         }
 
 
         protected override void TweenCompleted()
         {
             if (TweenMode != TweenMode.Spike)
-                transform.localScale = TargetScale;
+                transform.localScale = _targetScale;
         }
     }
 }

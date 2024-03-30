@@ -17,8 +17,8 @@ namespace Muks.Tween
         protected Queue<DataSequence> DataSequences = new Queue<DataSequence>();
         protected Dictionary<TweenMode, Func<float, float, float>> _percentHandler;
 
-        private LoopType _loopType;
         private bool _isRightMove = true;
+        private LoopType _loopType;
         private Action _onUpdated;
         private Action _onStarted;
         private Action _onCompleted;
@@ -27,6 +27,7 @@ namespace Muks.Tween
         private Dictionary<int, Action> _onCompletedDic = new Dictionary<int, Action>();
         private int _currentDataSequenceId;
         private int _dataSequenceIdCount = -1;
+
 
         public virtual void SetData(DataSequence dataSequence)
         {
@@ -232,7 +233,7 @@ namespace Muks.Tween
         }
 
 
-        //등속운동
+        /// <summary> 등속 운동 </summary>
         private float Constant(float elapsedDuration, float totalDuration)
         {
             float percent = elapsedDuration / totalDuration;
@@ -241,6 +242,7 @@ namespace Muks.Tween
         }
 
 
+        /// <summary> 가속 운동 </summary>
         private float Quadratic(float elapsedDuration, float totalDuration)
         {
             float percent = elapsedDuration / totalDuration;
@@ -250,6 +252,7 @@ namespace Muks.Tween
         }
 
 
+        /// <summary> 점점 빠르게 가다 점점 느리게 </summary>
         private float Smoothstep(float elapsedDuration, float totalDuration)
         {
             float percent = elapsedDuration / totalDuration;
@@ -259,6 +262,7 @@ namespace Muks.Tween
         }
 
 
+        /// <summary> 점점 빠르게 가다 점점 느리게(Smoothstep 보다 더 느리게) </summary>
         private float Smootherstep(float elapsedDuration, float totalDuration)
         {
             float percent = elapsedDuration / totalDuration;
@@ -268,6 +272,7 @@ namespace Muks.Tween
         }
 
 
+        /// <summary> 목표 위치로 갔다가 다시 원래 위치로 이동</summary>
         private float Spike(float elapsedDuration, float totalDuration)
         {
             float percent = elapsedDuration / totalDuration;

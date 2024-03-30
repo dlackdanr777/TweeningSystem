@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,13 +5,10 @@ namespace Muks.Tween
 {
     public class TweenImageColor : TweenData
     {
-        /// <summary> 목표 위치 </summary>
-        public Color TargetColor;
-
-        /// <summary> 시작 위치</summary>
-        public Color StartColor;
-
+        private Color _startColor;
+        private Color _targetColor;
         private Image _image;
+
 
         public override void SetData(DataSequence dataSequence)
         {
@@ -28,9 +24,10 @@ namespace Muks.Tween
                 }
             }
 
-            StartColor = _image.color;
-            TargetColor = (Color)dataSequence.TargetValue;
+            _startColor = _image.color;
+            _targetColor = (Color)dataSequence.TargetValue;
         }
+
 
         protected override void Update()
         {
@@ -38,14 +35,14 @@ namespace Muks.Tween
 
             float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
             
-            _image.color = Color.LerpUnclamped(StartColor, TargetColor, percent);
+            _image.color = Color.LerpUnclamped(_startColor, _targetColor, percent);
         }
 
 
         protected override void TweenCompleted()
         {
             if (TweenMode != TweenMode.Spike)
-                _image.color = TargetColor;
+                _image.color = _targetColor;
         }
     }
 }

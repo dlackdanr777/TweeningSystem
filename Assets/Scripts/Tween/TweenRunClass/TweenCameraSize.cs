@@ -1,17 +1,12 @@
-
 using UnityEngine;
 
 namespace Muks.Tween
 {
     public class TweenCameraSize : TweenData
     {
+        private float _startSize;
+        private float _targetSize;
         private Camera _camera;
-
-        /// <summary> 시작 회전 값</summary>
-        public float StartSize;
-
-        /// <summary> 목표 회전 값 </summary>
-        public float TargetSize;
 
 
         public override void SetData(DataSequence dataSequence)
@@ -28,8 +23,8 @@ namespace Muks.Tween
                 }
             }
 
-            StartSize = _camera.orthographicSize;
-            TargetSize = (float)dataSequence.TargetValue;
+            _startSize = _camera.orthographicSize;
+            _targetSize = (float)dataSequence.TargetValue;
         }
 
 
@@ -39,12 +34,14 @@ namespace Muks.Tween
 
             float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
 
-            _camera.orthographicSize = Mathf.LerpUnclamped(StartSize, TargetSize, percent);
+            _camera.orthographicSize = Mathf.LerpUnclamped(_startSize, _targetSize, percent);
         }
+
 
         protected override void TweenCompleted()
         {
-            _camera.orthographicSize = TargetSize;
+            if(TweenMode != TweenMode.Spike)
+                _camera.orthographicSize = _targetSize;
         }
     }
 }
