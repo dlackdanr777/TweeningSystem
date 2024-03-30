@@ -14,22 +14,26 @@ namespace Muks.Tween
 
         public float TargetAlpha;
 
-        public TextMeshProUGUI Text;
+        private TextMeshProUGUI _text;
 
         public override void SetData(DataSequence dataSequence)
         {
             base.SetData(dataSequence);
-            if(TryGetComponent(out Text))
+
+            if (_text == null)
             {
-                TargetAlpha = (float)dataSequence.TargetValue;
-                StartColor = Text.color;
-                TargetColor = Text.color;
-                TargetColor.a = TargetAlpha;
+                if (!TryGetComponent(out _text))
+                {
+                    Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
+                    enabled = false;
+                    return;
+                }
             }
-            else
-            {
-                Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
-            }
+
+            TargetAlpha = (float)dataSequence.TargetValue;
+            StartColor = _text.color;
+            TargetColor = _text.color;
+            TargetColor.a = TargetAlpha;
         }
 
         protected override void Update()
@@ -38,14 +42,14 @@ namespace Muks.Tween
 
             float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
             
-            Text.color = Color.LerpUnclamped(StartColor, TargetColor, percent);
+            _text.color = Color.LerpUnclamped(StartColor, TargetColor, percent);
         }
 
 
         protected override void TweenCompleted()
         {
             if (TweenMode != TweenMode.Spike)
-                Text.color = TargetColor;
+                _text.color = TargetColor;
         }
     }
 }

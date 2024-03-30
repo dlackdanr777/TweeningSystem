@@ -14,23 +14,27 @@ namespace Muks.Tween
 
         public float TargetAlpha;
 
-        public SpriteRenderer SpriteRenderer;
+        private SpriteRenderer _spriteRenderer;
 
 
         public override void SetData(DataSequence dataSequence)
         {
             base.SetData(dataSequence);
-            if(TryGetComponent(out SpriteRenderer))
+
+            if (_spriteRenderer == null)
             {
-                TargetAlpha = (float)dataSequence.TargetValue;
-                StartColor = SpriteRenderer.color;
-                TargetColor = SpriteRenderer.color;
-                TargetColor.a = TargetAlpha;
+                if (!TryGetComponent(out _spriteRenderer))
+                {
+                    Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
+                    enabled = false;
+                    return;
+                }
             }
-            else
-            {
-                Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
-            }
+
+            TargetAlpha = (float)dataSequence.TargetValue;
+            StartColor = _spriteRenderer.color;
+            TargetColor = _spriteRenderer.color;
+            TargetColor.a = TargetAlpha;
         }
 
 
@@ -40,14 +44,14 @@ namespace Muks.Tween
 
             float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
             
-            SpriteRenderer.color = Color.LerpUnclamped(StartColor, TargetColor, percent);
+            _spriteRenderer.color = Color.LerpUnclamped(StartColor, TargetColor, percent);
         }
 
 
         protected override void TweenCompleted()
         {
             if (TweenMode != TweenMode.Spike)
-                SpriteRenderer.color = TargetColor;
+                _spriteRenderer.color = TargetColor;
         }
     }
 }

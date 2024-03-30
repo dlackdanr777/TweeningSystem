@@ -15,21 +15,21 @@ namespace Muks.Tween
         /// <summary> 시작 회전 값</summary>
         public Vector2 StartSizeDelta;
 
-        public RectTransform RectTransform;
+        private RectTransform _rectTransform;
 
 
         public override void SetData(DataSequence dataSequence)
         {
             base.SetData(dataSequence);
 
-            if (TryGetComponent(out RectTransform))
+            if (_rectTransform == null)
             {
-                StartSizeDelta = RectTransform.sizeDelta;
-                TargetSizeDelta = (Vector2)dataSequence.TargetValue;
-            }
-            else
-            {
-                Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
+                if (!TryGetComponent(out _rectTransform))
+                {
+                    Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
+                    enabled = false;
+                    return;
+                }
             }
         }
 
@@ -42,8 +42,8 @@ namespace Muks.Tween
 
             float width = Mathf.LerpUnclamped(StartSizeDelta.x, TargetSizeDelta.x, percent);
             float height = Mathf.LerpUnclamped(StartSizeDelta.y, TargetSizeDelta.y, percent);
-            RectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-            RectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+            _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+            _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
         }
 
 
@@ -51,8 +51,8 @@ namespace Muks.Tween
         {
             if (TweenMode != TweenMode.Spike)
             {
-                RectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, TargetSizeDelta.x);
-                RectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, TargetSizeDelta.y);
+                _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, TargetSizeDelta.x);
+                _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, TargetSizeDelta.y);
             }  
         }
     }

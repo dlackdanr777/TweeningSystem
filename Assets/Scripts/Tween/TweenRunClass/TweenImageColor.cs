@@ -12,20 +12,24 @@ namespace Muks.Tween
         /// <summary> 시작 위치</summary>
         public Color StartColor;
 
-        public Image Image;
+        private Image _image;
 
         public override void SetData(DataSequence dataSequence)
         {
             base.SetData(dataSequence);
-            if(TryGetComponent(out Image))
+
+            if (_image == null)
             {
-                StartColor = Image.color;
-                TargetColor = (Color)dataSequence.TargetValue;
+                if (!TryGetComponent(out _image))
+                {
+                    Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
+                    enabled = false;
+                    return;
+                }
             }
-            else
-            {
-                Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
-            }
+
+            StartColor = _image.color;
+            TargetColor = (Color)dataSequence.TargetValue;
         }
 
         protected override void Update()
@@ -34,14 +38,14 @@ namespace Muks.Tween
 
             float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
             
-            Image.color = Color.LerpUnclamped(StartColor, TargetColor, percent);
+            _image.color = Color.LerpUnclamped(StartColor, TargetColor, percent);
         }
 
 
         protected override void TweenCompleted()
         {
             if (TweenMode != TweenMode.Spike)
-                Image.color = TargetColor;
+                _image.color = TargetColor;
         }
     }
 }

@@ -7,31 +7,28 @@ using TMPro;
 
 public class Test : MonoBehaviour
 {
+    [SerializeField] private Image _image;
 
     void Start()
     {
-        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 5, 0), 0.1f, TweenMode.Constant);
-        Tween.TransformMove(gameObject, new Vector3(0, 0, 0), 0.1f, TweenMode.Constant);
+        Color startColor = _image.color;
+        Color targetColor = Color.white;
+        Tween.IamgeColor(_image, targetColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, startColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, targetColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, startColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, targetColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, startColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, targetColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, startColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, targetColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, startColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, targetColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, startColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, targetColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, startColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, targetColor, 0.1f, TweenMode.Constant);
+        Tween.IamgeColor(_image, startColor, 0.1f, TweenMode.Constant);
     }
 
 

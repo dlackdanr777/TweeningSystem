@@ -14,14 +14,14 @@ namespace Muks.Tween
         {
             base.SetData(dataSequence);
 
-            if(TryGetComponent(out _layoutGroup))
+            if (_layoutGroup == null)
             {
-                StartValue = _layoutGroup.spacing;
-                TargetValue = (float)dataSequence.TargetValue;
-            }
-            else
-            {
-                Debug.LogError("컴포넌트가 존재하지 않습니다.");
+                if (!TryGetComponent(out _layoutGroup))
+                {
+                    Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
+                    enabled = false;
+                    return;
+                }
             }
         }
 

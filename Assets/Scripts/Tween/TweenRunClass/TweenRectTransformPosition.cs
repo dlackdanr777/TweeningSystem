@@ -15,22 +15,25 @@ namespace Muks.Tween
         /// <summary> 시작 회전 값</summary>
         public Vector3 StartAnchoredPosition;
 
-        public RectTransform _rectTransform;
+        private RectTransform _rectTransform;
 
 
         public override void SetData(DataSequence dataSequence)
         {
             base.SetData(dataSequence);
 
-            if (TryGetComponent(out _rectTransform))
+            if(_rectTransform == null)
             {
-                StartAnchoredPosition = _rectTransform.anchoredPosition;
-                TargetAnchoredPosition = (Vector2)dataSequence.TargetValue;
+                if (!TryGetComponent(out _rectTransform))
+                {
+                    Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
+                    enabled = false;
+                    return;
+                }
             }
-            else
-            {
-                Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
-            }
+
+            StartAnchoredPosition = _rectTransform.anchoredPosition;
+            TargetAnchoredPosition = (Vector2)dataSequence.TargetValue;
         }
 
 
