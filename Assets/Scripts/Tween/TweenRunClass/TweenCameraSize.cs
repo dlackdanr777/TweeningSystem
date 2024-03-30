@@ -32,7 +32,7 @@ namespace Muks.Tween
         {
             base.Update();
 
-            float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
+            float percent = _percentHandler[_tweenMode](ElapsedDuration, TotalDuration);
 
             _camera.orthographicSize = Mathf.LerpUnclamped(_startSize, _targetSize, percent);
         }
@@ -40,7 +40,7 @@ namespace Muks.Tween
 
         protected override void TweenCompleted()
         {
-            if(TweenMode != TweenMode.Spike)
+            if(_tweenMode != TweenMode.Spike)
                 _camera.orthographicSize = _targetSize;
         }
     }

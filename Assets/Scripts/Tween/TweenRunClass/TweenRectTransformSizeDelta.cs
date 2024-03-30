@@ -32,7 +32,7 @@ namespace Muks.Tween
         {
             base.Update();
 
-            float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
+            float percent = _percentHandler[_tweenMode](ElapsedDuration, TotalDuration);
 
             float width = Mathf.LerpUnclamped(_startSizeDelta.x, _targetSizeDelta.x, percent);
             float height = Mathf.LerpUnclamped(_startSizeDelta.y, _targetSizeDelta.y, percent);
@@ -43,7 +43,7 @@ namespace Muks.Tween
 
         protected override void TweenCompleted()
         {
-            if (TweenMode != TweenMode.Spike)
+            if (_tweenMode != TweenMode.Spike)
             {
                 _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _targetSizeDelta.x);
                 _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _targetSizeDelta.y);

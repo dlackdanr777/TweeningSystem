@@ -21,7 +21,7 @@ namespace Muks.Tween
         {
             base.Update();
 
-            float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
+            float percent = _percentHandler[_tweenMode](ElapsedDuration, TotalDuration);
 
             transform.eulerAngles = Vector3.LerpUnclamped(_startEulerAngles, _targetEulerAngles, percent);
         }
@@ -29,7 +29,7 @@ namespace Muks.Tween
 
         protected override void TweenCompleted()
         {
-            if (TweenMode != TweenMode.Spike)
+            if (_tweenMode != TweenMode.Spike)
                 transform.eulerAngles = _targetEulerAngles;
         }
     }

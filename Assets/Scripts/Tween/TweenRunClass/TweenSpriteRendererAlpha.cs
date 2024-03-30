@@ -35,7 +35,7 @@ namespace Muks.Tween
         {
             base.Update();
 
-            float percent = _percentHandler[TweenMode](ElapsedDuration, TotalDuration);
+            float percent = _percentHandler[_tweenMode](ElapsedDuration, TotalDuration);
             
             _spriteRenderer.color = Color.LerpUnclamped(_startColor, _targetColor, percent);
         }
@@ -43,7 +43,7 @@ namespace Muks.Tween
 
         protected override void TweenCompleted()
         {
-            if (TweenMode != TweenMode.Spike)
+            if (_tweenMode != TweenMode.Spike)
                 _spriteRenderer.color = _targetColor;
         }
     }

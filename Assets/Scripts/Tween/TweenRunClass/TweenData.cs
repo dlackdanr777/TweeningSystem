@@ -13,8 +13,8 @@ namespace Muks.Tween
         public float TotalDuration; //총 시간
         public bool IsLoop; //반복 여부
 
-        protected TweenMode TweenMode;
-        protected Queue<DataSequence> DataSequences = new Queue<DataSequence>();
+        protected TweenMode _tweenMode;
+        protected Queue<DataSequence> _dataSequences = new Queue<DataSequence>();
         protected Dictionary<TweenMode, Func<float, float, float>> _percentHandler;
 
         private bool _isRightMove = true;
@@ -33,7 +33,7 @@ namespace Muks.Tween
         {
             _currentDataSequenceId = dataSequence.Id;
             TotalDuration = dataSequence.Duration;
-            TweenMode = dataSequence.TweenMode;
+            _tweenMode = dataSequence.TweenMode;
 
             //해당 애니메이션 id값과 같은 id를 가진 대리자가 존재할 경우 진행중 대리자 적재
             if (_onUpdatedDic.TryGetValue(dataSequence.Id, out _onUpdated))
@@ -45,24 +45,38 @@ namespace Muks.Tween
             if (_onStartedDic.TryGetValue(_currentDataSequenceId, out _onStarted))
             {
                 _onStarted?.Invoke();
-                _onCompletedDic.Remove(_currentDataSequenceId);
+                _onStartedDic.Remove(_currentDataSequenceId);
             }
 
             //해당 애니메이션 id값과 같은 id를 가진 대리자가 존재할 경우 완료 대리자 적재
             if (_onCompletedDic.TryGetValue(_currentDataSequenceId, out _onCompleted))
+            {
                 _onCompletedDic.Remove(_currentDataSequenceId);
+            }
             else
+            {
                 _onCompleted = null;
+            }
+
         }
+
+
+        public void AddDataSequence(DataSequence dataSequence)
+        {
+            //대리자가 어느 DataSequence와 같이 추가되는지 확인하기 위해 Id값 부여
+            dataSequence.Id = ++_dataSequenceIdCount;
+            _dataSequences.Enqueue(dataSequence);
+        }
+
 
 
         /// <summary>무한 반복</summary>
         public void Loop(LoopType loopType = LoopType.Restart)
         {
-            DataSequence sequence = DataSequences.Last();
-            DataSequences.Clear();
-            DataSequences.Enqueue(sequence);
-            SetData(DataSequences.Dequeue());
+            DataSequence sequence = _dataSequences.Last();
+            _dataSequences.Clear();
+            _dataSequences.Enqueue(sequence);
+            SetData(_dataSequences.Dequeue());
             _loopType = loopType;
             IsLoop = true;
         }
@@ -71,7 +85,7 @@ namespace Muks.Tween
         /// <summary>반복 횟수 설정</summary>
         public void Repeat(int count)
         {
-            DataSequence sequence = DataSequences.Last();
+            DataSequence sequence = _dataSequences.Last();
 
             for (int i = 1; i < count; i++)
             {
@@ -83,7 +97,7 @@ namespace Muks.Tween
         /// <summary>Tween의 모든 데이터를 초기화하는 함수</summary>
         public void Clear()
         {
-            DataSequences.Clear();
+            _dataSequences.Clear();
 
             _onStartedDic.Clear();
             _onStarted = null;
@@ -204,10 +218,10 @@ namespace Muks.Tween
                 _onUpdated = null;
 
                 //적재된 애니메이션들이 있을 경우 큐에서 뽑아 애니메이션 설정을 다시 진행 한다.
-                if (0 < DataSequences.Count)
+                if (0 < _dataSequences.Count)
                 {
                     ElapsedDuration = 0;
-                    SetData(DataSequences.Dequeue());
+                    SetData(_dataSequences.Dequeue());
                 }
                 else
                 {
@@ -216,14 +230,6 @@ namespace Muks.Tween
                     enabled = false;
                 }
             }
-        }
-
-
-        public void AddDataSequence(DataSequence dataSequence)
-        {
-            //대리자가 어느 DataSequence와 같이 추가되는지 확인하기 위해 Id값 부여
-            dataSequence.Id = ++_dataSequenceIdCount;
-            DataSequences.Enqueue(dataSequence);
         }
 
 
