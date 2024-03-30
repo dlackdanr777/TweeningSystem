@@ -22,6 +22,9 @@ namespace Muks.Tween
                     return;
                 }
             }
+
+            _startSizeDelta = _rectTransform.sizeDelta;
+            _targetSizeDelta = (Vector2)dataSequence.TargetValue;
         }
 
 
