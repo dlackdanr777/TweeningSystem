@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TweenModeMoveTest : MonoBehaviour
+public class TweenMoveTest : MonoBehaviour
 {
     [Header("GameObjects")]
     [SerializeField] private GameObject _constantObj;
