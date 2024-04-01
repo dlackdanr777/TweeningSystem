@@ -1,9 +1,23 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Muks.Tween
 {
+
+    public static class ExtensionMethod
+    {
+        public static void Play(this Component value)
+        {
+            TweenData[] tweens = value.GetComponents<TweenData>();
+
+            foreach (TweenData tween in tweens)
+            {
+                tween.enabled = true;
+            }
+        }
+    }
 
     /// <summary>트윈 애니메이션을 위한 정적 클래스</summary>
     public static class Tween

@@ -4,8 +4,8 @@ namespace Muks.Tween
 {
     public class TweenRectTransformAnchoredPosition : TweenData
     {
-        private Vector3 _startAnchoredPosition;
-        private Vector3 _targetAnchoredPosition;
+        private Vector2 _startAnchoredPosition;
+        private Vector2 _targetAnchoredPosition;
         private RectTransform _rectTransform;
 
 
@@ -34,7 +34,7 @@ namespace Muks.Tween
 
             float percent = _percentHandler[_tweenMode](ElapsedDuration, TotalDuration);
 
-            _rectTransform.anchoredPosition = Vector3.LerpUnclamped(_startAnchoredPosition, _targetAnchoredPosition, percent);
+            _rectTransform.anchoredPosition = Vector2.LerpUnclamped(_startAnchoredPosition, _targetAnchoredPosition, percent);
         }
 
 
