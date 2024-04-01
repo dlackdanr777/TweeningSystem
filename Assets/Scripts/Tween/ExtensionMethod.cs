@@ -235,26 +235,8 @@ namespace Muks.Tween
         /// <summary>목표 값으로 지속 시간동안 텍스트 알파 값을 변경하는 함수</summary>
         public static TweenData TweenAlpha(this Text target, float targetAlpha, float duration, TweenMode tweenMode = TweenMode.Constant)
         {
-            if (!target.TryGetComponent(out TweenTextAlpha tweenData))
-                tweenData = target.gameObject.AddComponent<TweenTextAlpha>();
-
-            DataSequence tmpData = new DataSequence();
-            tmpData.TargetValue = targetAlpha;
-            tmpData.Duration = duration;
-            tmpData.TweenMode = tweenMode;
-            tmpData.Component = target;
-
-            tweenData.IsLoop = false;
-            tweenData.AddDataSequence(tmpData);
-
-            if (!tweenData.enabled)
-            {
-                tweenData.ElapsedDuration = 0;
-                tweenData.TotalDuration = 0;
-                tweenData.enabled = true;
-            }
-
-            return tweenData;
+            Color targetColor = new Color(target.color.r, target.color.g, target.color.b, targetAlpha);
+            return TweenColor(target, targetColor, duration, tweenMode);
         }
 
 
@@ -287,26 +269,8 @@ namespace Muks.Tween
         /// <summary>목표 값으로 지속 시간동안 TMP 알파 값을 변경하는 함수</summary>
         public static TweenData TweenAlpha(this TextMeshProUGUI target, float targetAlpha, float duration, TweenMode tweenMode = TweenMode.Constant)
         {
-            if (!target.TryGetComponent(out TweenTMPAlpha tweenData))
-                tweenData = target.gameObject.AddComponent<TweenTMPAlpha>();
-
-            DataSequence tmpData = new DataSequence();
-            tmpData.TargetValue = targetAlpha;
-            tmpData.Duration = duration;
-            tmpData.TweenMode = tweenMode;
-            tmpData.Component = target;
-
-            tweenData.IsLoop = false;
-            tweenData.AddDataSequence(tmpData);
-
-            if (!tweenData.enabled)
-            {
-                tweenData.ElapsedDuration = 0;
-                tweenData.TotalDuration = 0;
-                tweenData.enabled = true;
-            }
-
-            return tweenData;
+            Color targetColor = new Color(target.color.r, target.color.g, target.color.b, targetAlpha);
+            return TweenColor(target, targetColor, duration, tweenMode);
         }
 
 
@@ -339,26 +303,8 @@ namespace Muks.Tween
         /// <summary>목표 값으로 지속 시간동안 이미지 알파 값을 변경하는 함수</summary>
         public static TweenData TweenAlpha(this Image target, float targetAlpha, float duration, TweenMode tweenMode = TweenMode.Constant)
         {
-            if (!target.TryGetComponent(out TweenImageAlpha tweenData))
-                tweenData = target.gameObject.AddComponent<TweenImageAlpha>();
-
-            DataSequence tmpData = new DataSequence();
-            tmpData.TargetValue = targetAlpha;
-            tmpData.Duration = duration;
-            tmpData.TweenMode = tweenMode;
-            tmpData.Component = target;
-
-            tweenData.IsLoop = false;
-            tweenData.AddDataSequence(tmpData);
-
-            if (!tweenData.enabled)
-            {
-                tweenData.ElapsedDuration = 0;
-                tweenData.TotalDuration = 0;
-                tweenData.enabled = true;
-            }
-
-            return tweenData;
+            Color targetColor = new Color(target.color.r, target.color.g, target.color.b, targetAlpha);
+            return TweenColor(target, targetColor, duration, tweenMode);
         }
 
 
@@ -391,27 +337,10 @@ namespace Muks.Tween
         /// <summary>목표 값으로 지속 시간동안 스프라이트 렌더러 알파 값을 변경하는 함수</summary>
         public static TweenData TweenAlpha(this SpriteRenderer target, float targetAlpha, float duration, TweenMode tweenMode = TweenMode.Constant)
         {
-            if (!target.TryGetComponent(out TweenSpriteRendererAlpha tweenData))
-                tweenData = target.gameObject.AddComponent<TweenSpriteRendererAlpha>();
-
-            DataSequence tmpData = new DataSequence();
-            tmpData.TargetValue = targetAlpha;
-            tmpData.Duration = duration;
-            tmpData.TweenMode = tweenMode;
-            tmpData.Component = target;
-
-            tweenData.IsLoop = false;
-            tweenData.AddDataSequence(tmpData);
-
-            if (!tweenData.enabled)
-            {
-                tweenData.ElapsedDuration = 0;
-                tweenData.TotalDuration = 0;
-                tweenData.enabled = true;
-            }
-
-            return tweenData;
+            Color targetColor = new Color(target.color.r, target.color.g, target.color.b, targetAlpha);
+            return TweenColor(target, targetColor, duration, tweenMode);
         }
+
 
         /// <summary>목표 값으로 지속 시간동안 캔버스 그룹 알파 값을 변경하는 함수</summary>
         public static TweenData TweenAlpha(this CanvasGroup target, float targetAlpha, float duration, TweenMode tweenMode = TweenMode.Constant)
@@ -491,8 +420,7 @@ namespace Muks.Tween
         }
 
     }
-
-
+}
 
     //===============================사용법이 수정됨에 따라 기존 클래스 주석 처리===============================
 
@@ -1080,5 +1008,4 @@ namespace Muks.Tween
             }*//*
 
         }*/
-}
 

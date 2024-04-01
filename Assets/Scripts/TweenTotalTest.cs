@@ -45,7 +45,7 @@ public class TweenTotalTest : MonoBehaviour
         _imageColorObj.TweenColor(new Color(0.5f, 1, 0.5f, 0.5f), _duration).Loop(LoopType.Yoyo);
 
         //텍스트 컬러
-        _tmpColorObj.TweenColor(new Color(1, 0.5f, 0.5f, 1), _duration).Loop(LoopType.Yoyo);
+        _tmpColorObj.TweenAlpha(0.1f, _duration).Loop(LoopType.Yoyo);
 
 
     }
