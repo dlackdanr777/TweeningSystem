@@ -14,14 +14,7 @@ namespace Muks.Tween
             base.SetData(dataSequence);
 
             if (_camera == null)
-            {
-                if (!TryGetComponent(out _camera))
-                {
-                    Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
-                    enabled = false;
-                    return;
-                }
-            }
+                _camera = (Camera)dataSequence.Component;
 
             _startSize = _camera.orthographicSize;
             _targetSize = (float)dataSequence.TargetValue;

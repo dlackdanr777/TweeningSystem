@@ -14,14 +14,7 @@ namespace Muks.Tween
             base.SetData(dataSequence);
 
             if (_canvasGroup == null)
-            {
-                if (!TryGetComponent(out _canvasGroup))
-                {
-                    Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
-                    enabled = false;
-                    return;
-                }
-            }
+                _canvasGroup = (CanvasGroup)dataSequence.Component;
 
             _targetAlpha = (float)dataSequence.TargetValue;
             _startAlpha = _canvasGroup.alpha;

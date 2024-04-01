@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 namespace Muks.Tween
 {
     public struct DataSequence
@@ -8,5 +10,6 @@ namespace Muks.Tween
         public object TargetValue;
         public float Duration;
         public TweenMode TweenMode;
+        public Component Component;
     }
 }

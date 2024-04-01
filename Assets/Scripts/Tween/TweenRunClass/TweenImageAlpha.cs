@@ -15,15 +15,8 @@ namespace Muks.Tween
         {
             base.SetData(dataSequence);
 
-            if(_image == null)
-            {
-                if (!TryGetComponent(out _image))
-                {
-                    Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
-                    enabled = false;
-                    return;
-                }
-            }
+            if (_image == null)
+                _image = (Image)dataSequence.Component;
 
             _targetAlpha = (float)dataSequence.TargetValue;
             _startColor = _image.color;

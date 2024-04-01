@@ -13,15 +13,8 @@ namespace Muks.Tween
         {
             base.SetData(dataSequence);
 
-            if(_rectTransform == null)
-            {
-                if (!TryGetComponent(out _rectTransform))
-                {
-                    Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
-                    enabled = false;
-                    return;
-                }
-            }
+            if (_rectTransform == null)
+                _rectTransform = (RectTransform)dataSequence.Component;
 
             _startAnchoredPosition = _rectTransform.anchoredPosition;
             _targetAnchoredPosition = (Vector2)dataSequence.TargetValue;

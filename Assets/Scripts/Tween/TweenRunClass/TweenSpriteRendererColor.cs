@@ -14,14 +14,7 @@ namespace Muks.Tween
             base.SetData(dataSequence);
 
             if (_spriteRenderer == null)
-            {
-                if (!TryGetComponent(out _spriteRenderer))
-                {
-                    Debug.LogError("필요 컴포넌트가 존재하지 않습니다.");
-                    enabled = false;
-                    return;
-                }
-            }
+                _spriteRenderer = (SpriteRenderer)dataSequence.Component;
 
             _startColor = _spriteRenderer.color;
             _targetColor = (Color)dataSequence.TargetValue;
