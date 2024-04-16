@@ -9,9 +9,9 @@ namespace Muks.Tween
 
     public class TweenData : MonoBehaviour
     {
-        public float ElapsedDuration; // 현재 경과 시간
-        public float TotalDuration; //총 시간
-        public bool IsLoop; //반복 여부
+        internal float ElapsedDuration; // 현재 경과 시간
+        internal float TotalDuration; //총 시간
+        internal bool IsLoop; //반복 여부
 
         protected TweenMode _tweenMode;
         protected Queue<TweenDataSequence> _dataSequences = new Queue<TweenDataSequence>();
