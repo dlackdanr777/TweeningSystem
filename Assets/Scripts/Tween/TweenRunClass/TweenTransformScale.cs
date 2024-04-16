@@ -8,7 +8,7 @@ namespace Muks.Tween
         private Vector3 _targetScale;
 
 
-        public override void SetData(DataSequence dataSequence)
+        public override void SetData(TweenDataSequence dataSequence)
         {
             base.SetData(dataSequence);
             _startScale = transform.localScale;

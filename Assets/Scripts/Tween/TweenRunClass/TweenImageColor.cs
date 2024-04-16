@@ -10,7 +10,7 @@ namespace Muks.Tween
         private Image _image;
 
 
-        public override void SetData(DataSequence dataSequence)
+        public override void SetData(TweenDataSequence dataSequence)
         {
             base.SetData(dataSequence);
 

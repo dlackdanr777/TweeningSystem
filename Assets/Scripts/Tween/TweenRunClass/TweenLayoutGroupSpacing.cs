@@ -10,7 +10,7 @@ namespace Muks.Tween
         private HorizontalOrVerticalLayoutGroup _layoutGroup;
 
 
-        public override void SetData(DataSequence dataSequence)
+        public override void SetData(TweenDataSequence dataSequence)
         {
             base.SetData(dataSequence);
 

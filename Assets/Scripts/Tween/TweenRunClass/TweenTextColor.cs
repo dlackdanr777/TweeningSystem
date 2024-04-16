@@ -9,7 +9,7 @@ namespace Muks.Tween
         private Color _targetColor;
         private Text _text;
 
-        public override void SetData(DataSequence dataSequence)
+        public override void SetData(TweenDataSequence dataSequence)
         {
             base.SetData(dataSequence);
 

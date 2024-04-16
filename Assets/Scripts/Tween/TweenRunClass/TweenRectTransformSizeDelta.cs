@@ -9,7 +9,7 @@ namespace Muks.Tween
         private RectTransform _rectTransform;
 
 
-        public override void SetData(DataSequence dataSequence)
+        public override void SetData(TweenDataSequence dataSequence)
         {
             base.SetData(dataSequence);
 

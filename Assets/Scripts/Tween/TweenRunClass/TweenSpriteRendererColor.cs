@@ -9,7 +9,7 @@ namespace Muks.Tween
         private SpriteRenderer _spriteRenderer;
 
 
-        public override void SetData(DataSequence dataSequence)
+        public override void SetData(TweenDataSequence dataSequence)
         {
             base.SetData(dataSequence);
 

@@ -67,7 +67,7 @@ namespace Muks.Tween
             if (!target.TryGetComponent(out TweenTransformMove tweenData))
                 tweenData = target.gameObject.AddComponent<TweenTransformMove>();
 
-            DataSequence tmpData = new DataSequence();
+            TweenDataSequence tmpData = new TweenDataSequence();
             tmpData.TargetValue = targetPosition;
             tmpData.Duration = duration;
             tmpData.TweenMode = tweenMode;
@@ -98,7 +98,7 @@ namespace Muks.Tween
             if (!target.TryGetComponent(out TweenTransformRotate tweenData))
                 tweenData = target.gameObject.AddComponent<TweenTransformRotate>();
 
-            DataSequence tmpData = new DataSequence();
+            TweenDataSequence tmpData = new TweenDataSequence();
             tmpData.TargetValue = targetEulerAngles;
             tmpData.Duration = duration;
             tmpData.TweenMode = tweenMode;
@@ -129,7 +129,7 @@ namespace Muks.Tween
             if (!target.TryGetComponent(out TweenTransformScale tweenData))
                 tweenData = target.gameObject.AddComponent<TweenTransformScale>();
 
-            DataSequence tmpData = new DataSequence();
+            TweenDataSequence tmpData = new TweenDataSequence();
             tmpData.TargetValue = targetScale;
             tmpData.Duration = duration;
             tmpData.TweenMode = tweenMode;
@@ -160,7 +160,7 @@ namespace Muks.Tween
             if (!target.TryGetComponent(out TweenRectTransformSizeDelta tweenData))
                 tweenData = target.gameObject.AddComponent<TweenRectTransformSizeDelta>();
 
-            DataSequence tmpData = new DataSequence();
+            TweenDataSequence tmpData = new TweenDataSequence();
             tmpData.TargetValue = targetSizeDelta;
             tmpData.Duration = duration;
             tmpData.TweenMode = tweenMode;
@@ -186,7 +186,7 @@ namespace Muks.Tween
             if (!target.TryGetComponent(out TweenRectTransformAnchoredPosition tweenData))
                 tweenData = target.gameObject.AddComponent<TweenRectTransformAnchoredPosition>();
 
-            DataSequence tmpData = new DataSequence();
+            TweenDataSequence tmpData = new TweenDataSequence();
             tmpData.TargetValue = targetAnchoredPosition;
             tmpData.Duration = duration;
             tmpData.TweenMode = tweenMode;
@@ -212,7 +212,7 @@ namespace Muks.Tween
             if (!target.TryGetComponent(out TweenTextColor tweenData))
                 tweenData = target.gameObject.AddComponent<TweenTextColor>();
 
-            DataSequence tmpData = new DataSequence();
+            TweenDataSequence tmpData = new TweenDataSequence();
             tmpData.TargetValue = targetColor;
             tmpData.Duration = duration;
             tmpData.TweenMode = tweenMode;
@@ -246,7 +246,7 @@ namespace Muks.Tween
             if (!target.TryGetComponent(out TweenTMPColor tweenData))
                 tweenData = target.gameObject.AddComponent<TweenTMPColor>();
 
-            DataSequence tmpData = new DataSequence();
+            TweenDataSequence tmpData = new TweenDataSequence();
             tmpData.TargetValue = targetColor;
             tmpData.Duration = duration;
             tmpData.TweenMode = tweenMode;
@@ -280,7 +280,7 @@ namespace Muks.Tween
             if (!target.TryGetComponent(out TweenImageColor tweenData))
                 tweenData = target.gameObject.AddComponent<TweenImageColor>();
 
-            DataSequence tmpData = new DataSequence();
+            TweenDataSequence tmpData = new TweenDataSequence();
             tmpData.TargetValue = targetColor;
             tmpData.Duration = duration;
             tmpData.TweenMode = tweenMode;
@@ -314,7 +314,7 @@ namespace Muks.Tween
             if (!target.TryGetComponent(out TweenSpriteRendererColor tweenData))
                 tweenData = target.gameObject.AddComponent<TweenSpriteRendererColor>();
 
-            DataSequence tmpData = new DataSequence();
+            TweenDataSequence tmpData = new TweenDataSequence();
             tmpData.TargetValue = targetColor;
             tmpData.Duration = duration;
             tmpData.TweenMode = tweenMode;
@@ -348,7 +348,7 @@ namespace Muks.Tween
             if (!target.TryGetComponent(out TweenCanvasGroupAlpha tweenData))
                 tweenData = target.gameObject.AddComponent<TweenCanvasGroupAlpha>();
 
-            DataSequence tmpData = new DataSequence();
+            TweenDataSequence tmpData = new TweenDataSequence();
             tmpData.TargetValue = targetAlpha;
             tmpData.Duration = duration;
             tmpData.TweenMode = tweenMode;
@@ -374,7 +374,7 @@ namespace Muks.Tween
             if (!target.TryGetComponent(out TweenLayoutGroupSpacing tweenData))
                 tweenData = target.gameObject.AddComponent<TweenLayoutGroupSpacing>();
 
-            DataSequence tmpData = new DataSequence();
+            TweenDataSequence tmpData = new TweenDataSequence();
             tmpData.TargetValue = targetValue;
             tmpData.Duration = duration;
             tmpData.TweenMode = tweenMode;
@@ -400,7 +400,7 @@ namespace Muks.Tween
             if (!target.TryGetComponent(out TweenCameraSize tweenData))
                 tweenData = target.gameObject.AddComponent<TweenCameraSize>();
 
-            DataSequence tmpData = new DataSequence();
+            TweenDataSequence tmpData = new TweenDataSequence();
             tmpData.TargetValue = targetSize;
             tmpData.Duration = duration;
             tmpData.TweenMode = tweenMode;

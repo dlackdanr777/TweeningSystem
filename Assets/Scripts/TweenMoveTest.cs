@@ -22,7 +22,10 @@ public class TweenMoveTest : MonoBehaviour
 
     private void Start()
     {
-        _constantObj.TweenMove(_constantObj.transform.position + new Vector3(10, 0, 0), _duration, TweenMode.Constant);
+
+        TweenData tween = _constantObj.TweenMove(_constantObj.transform.position + new Vector3(10, 0, 0), _duration, TweenMode.Constant);
+        
+
         _quadraticObj.TweenMove(_quadraticObj.transform.position + new Vector3(10, 0, 0), _duration, TweenMode.Quadratic);
         _smoothstepObj.TweenMove(_smoothstepObj.transform.position + new Vector3(10, 0, 0), _duration, TweenMode.Smoothstep);
         _spikeObj.TweenMove(_spikeObj.transform.position + new Vector3(10, 0, 0), _duration, TweenMode.Spike);

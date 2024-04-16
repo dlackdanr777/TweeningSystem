@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Muks.Tween
 {
-    public struct DataSequence
+    public struct TweenDataSequence
     {
         public int Id;
         public object StartValue;

@@ -9,7 +9,7 @@ namespace Muks.Tween
         private Camera _camera;
 
 
-        public override void SetData(DataSequence dataSequence)
+        public override void SetData(TweenDataSequence dataSequence)
         {
             base.SetData(dataSequence);
 

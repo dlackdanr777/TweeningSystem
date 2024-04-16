@@ -14,7 +14,7 @@ namespace Muks.Tween
         public bool IsLoop; //반복 여부
 
         protected TweenMode _tweenMode;
-        protected Queue<DataSequence> _dataSequences = new Queue<DataSequence>();
+        protected Queue<TweenDataSequence> _dataSequences = new Queue<TweenDataSequence>();
         protected Dictionary<TweenMode, Func<float, float, float>> _percentHandler;
 
         private bool _isRightMove = true;
@@ -29,7 +29,7 @@ namespace Muks.Tween
         private int _dataSequenceIdCount = -1;
 
 
-        public virtual void SetData(DataSequence dataSequence)
+        public virtual void SetData(TweenDataSequence dataSequence)
         {
             _currentDataSequenceId = dataSequence.Id;
             TotalDuration = dataSequence.Duration;
@@ -61,7 +61,7 @@ namespace Muks.Tween
         }
 
 
-        public void AddDataSequence(DataSequence dataSequence)
+        public void AddDataSequence(TweenDataSequence dataSequence)
         {
             //대리자가 어느 DataSequence와 같이 추가되는지 확인하기 위해 Id값 부여
             dataSequence.Id = ++_dataSequenceIdCount;
@@ -73,7 +73,7 @@ namespace Muks.Tween
         /// <summary>무한 반복</summary>
         public void Loop(LoopType loopType = LoopType.Restart)
         {
-            DataSequence sequence = _dataSequences.Last();
+            TweenDataSequence sequence = _dataSequences.Last();
             _dataSequences.Clear();
             _dataSequences.Enqueue(sequence);
             SetData(_dataSequences.Dequeue());
@@ -85,7 +85,7 @@ namespace Muks.Tween
         /// <summary>반복 횟수 설정</summary>
         public void Repeat(int count)
         {
-            DataSequence sequence = _dataSequences.Last();
+            TweenDataSequence sequence = _dataSequences.Last();
 
             for (int i = 1; i < count; i++)
             {
