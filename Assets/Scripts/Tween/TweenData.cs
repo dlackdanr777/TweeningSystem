@@ -9,9 +9,10 @@ namespace Muks.Tween
 
     public class TweenData : MonoBehaviour
     {
-        internal float ElapsedDuration; // 현재 경과 시간
-        internal float TotalDuration; //총 시간
-        internal bool IsLoop; //반복 여부
+
+        public float ElapsedDuration; // 현재 경과 시간
+        public float TotalDuration; //총 시간
+        public bool IsLoop; //반복 여부
 
         protected TweenMode _tweenMode;
         protected Queue<TweenDataSequence> _dataSequences = new Queue<TweenDataSequence>();
@@ -19,6 +20,7 @@ namespace Muks.Tween
 
         private bool _isRightMove = true;
         private LoopType _loopType;
+
         private Action _onUpdated;
         private Action _onStarted;
         private Action _onCompleted;
@@ -132,6 +134,14 @@ namespace Muks.Tween
         {
             _onUpdatedDic.Add(_dataSequenceIdCount, onUpdated);
             return this;
+        }
+
+
+        /// <summary> 현재 완료 대리자를 실행하고 null값으로 변경하는 함수 </summary>
+        public void OnCompletedStart()
+        {
+            _onCompleted?.Invoke();
+            _onCompleted = null;
         }
 
 
