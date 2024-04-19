@@ -107,9 +107,11 @@ namespace Muks.Tween
         /// <summary> Tween class에서 현재 시퀸스를 업데이트하기 위한 함수 (임의 사용 X) </summary>
         public void Update(float _deltaTime)
         {
+            //시작중이 아니거나 끝난상태면 리턴
             if (!_isStart || _isEnd)
                 return;
 
+            //대기 시간 시퀀스가 진행중이면 일정시간 대기 후 콜백 및 SetData()로 다음 시퀀스를 불러옴
             if (0 < _waitTime)
             {
                 _elapsedTime += _deltaTime;
@@ -124,31 +126,40 @@ namespace Muks.Tween
                 return;
             }
 
+            //Tween 시퀀스가 진행중이면
             if (0 < _currentTweenDataList.Count)
             {
                 _elapsedTime += _deltaTime;
 
+                //일정시간 전까진 계속 리턴
+                if (_elapsedTime < _deltaTime * 5)
+                    return;
+
+                //시퀀스안의 TweenData의 숫자만큼 반복
                 for (int i = 0, count = _currentTweenDataList.Count; i < count; i++)
                 {
-                    if (_elapsedTime < _deltaTime * 5)
-                        return;
 
+                    //경과시간이 지나지 않았으면 continue
                     if (_elapsedTime < _currentTweenDataList[i].TotalDuration)
                         continue;
 
+                    //이미 종료가 됬다면  continue
                     if (!_currentTweenDataList[i].enabled)
                         continue;
-
+                    
+                    //Tween내의 완료 대리자를 실행하며 비활성화 시킴
                     _currentTweenDataList[i].OnCompletedStart();
                     _currentTweenDataList[i].enabled = false;
                 }
 
+                //만약 전부 비활성화 상태면 아래로 넘어감
                 for (int i = 0, count = _currentTweenDataList.Count; i < count; i++)
                 {
                     if (_currentTweenDataList[i].enabled)
                         return;
                 }
 
+                //시퀀스 콜백 실행및 SetData()를 통해 다음 시퀀스를 불러옴
                 _currentCallback?.Invoke();
                 SetData();
             }
@@ -185,7 +196,6 @@ namespace Muks.Tween
             {
                 _currentCallback = currentSequenceData.Callback;
             }
-
 
         }
     }

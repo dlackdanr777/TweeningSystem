@@ -223,6 +223,7 @@ namespace Muks.Tween
                 if (ElapsedDuration < TotalDuration)
                     return;
 
+                //총 경과시간을 넘었을 경우 콜백 함수 실행 및 초기화
                 _onCompleted?.Invoke();
                 _onCompleted = null;
                 _onUpdated = null;
@@ -233,9 +234,9 @@ namespace Muks.Tween
                     ElapsedDuration = 0;
                     SetData(_dataSequences.Dequeue());
                 }
+                //없을 경우 완료 함수 실행후 종료
                 else
                 {
-                    //아닐 경우 완료 함수 실행후 종료
                     TweenCompleted();
                     enabled = false;
                 }

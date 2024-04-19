@@ -22,7 +22,7 @@ namespace Muks.Tween
 
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private static void CreateSingleton()
+        private static void CreateObj()
         {
             GameObject obj = new GameObject("MuksTween");
             obj.AddComponent<Tween>();
@@ -37,12 +37,11 @@ namespace Muks.Tween
             {
                 _sequenceUpdateList[i].Update(deltaTime);
 
-                if (_sequenceUpdateList[i].IsEnd)
-                {
+                if (!_sequenceUpdateList[i].IsEnd)
+                    continue;
+
                     _sequenceUpdateList.RemoveAt(i--);
                     count--;
-                    continue;
-                }
             }
         }
     }
