@@ -30,6 +30,23 @@ public class TweenSequenceTest : MonoBehaviour
         sequence.Append(data5);
 
         sequence.Play();
-        
+
+
+/*        Vector3 targetPos = new Vector3(0, 1, 0);
+        Vector3 targetScale = new Vector3(2, 2, 2);
+        float duration = 2;
+        TweenMode tweenMode = TweenMode.Constant;
+
+        TweenData tween1 = transform.TweenMove(targetPos, duration, tweenMode);
+        TweenData tween2 = transform.TweenScale(targetScale, duration, tweenMode);
+
+        Sequence sequence = Tween.Sequence(); //시퀀스 기능 사용
+
+        sequence.Append(tween1); //시퀀스 마지막 Tween 추가
+        sequence.Join(tween2); //시퀀스 마지막 Tween에 결합하여 동시 실행
+        sequence.AppendInterval(duration); //시퀀스 마지막 일정 시간 대기 추가
+        sequence.AppendCallback(() => Debug.Log("Callback")); //시퀀스 마지막 콜백 추가
+        sequence.Play(); //시퀀스 시작
+*/
     }
 }

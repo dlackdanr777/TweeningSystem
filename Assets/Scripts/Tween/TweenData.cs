@@ -66,7 +66,7 @@ namespace Muks.Tween
         public void AddDataSequence(TweenDataSequence dataSequence)
         {
             //대리자가 어느 DataSequence와 같이 추가되는지 확인하기 위해 Id값 부여
-            dataSequence.Id = ++_dataSequenceIdCount;
+            dataSequence.SetId(++_dataSequenceIdCount);
             _dataSequences.Enqueue(dataSequence);
         }
 

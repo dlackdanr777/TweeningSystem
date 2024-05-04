@@ -4,8 +4,8 @@ namespace Muks.Tween
 {
     public class TweenTransformMove : TweenData
     {
-        private Vector3 _startPosition;
-        private Vector3 _targetPosition;
+        [SerializeField] private Vector3 _startPosition;
+        [SerializeField] private Vector3 _targetPosition;
 
 
         public override void SetData(TweenDataSequence dataSequence)
