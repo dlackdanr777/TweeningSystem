@@ -17,7 +17,7 @@ public class TweenActionTest : MonoBehaviour
         _restartButton.onClick.AddListener(OnRestartButtonClicked);
         _pauseButton.onClick.AddListener(OnPauseButtonClicked);
 
-        TweenData tween = _target.TweenMove(_target.transform.position + new Vector3(6, 0, 0), 10, TweenMode.Constant);
+        TweenData tween = _target.TweenMove(_target.transform.position + new Vector3(6, 0, 0), 10, Ease.Constant);
         tween.OnStart(OnStarted);
         tween.OnUpdate(OnUpdated);
         tween.OnComplete(OnCompleted);

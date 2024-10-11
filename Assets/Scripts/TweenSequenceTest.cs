@@ -9,7 +9,7 @@ public class TweenSequenceTest : MonoBehaviour
 
     private void Start()
     {
-        Sequence sequence = Tween.Sequence();
+        Sequence sequence = Tween.Sequence(); //½ÃÄö½º »ý¼º
         TweenData data1 = _moveObj.TweenMove(_moveObj.transform.position + new Vector3(0, 3, 0),  3);
         data1.OnComplete(() => Debug.Log("data1 End!"));
         TweenData data2 = _ratateObj.TweenRotate(new Vector3(0, 360, 0), 7);

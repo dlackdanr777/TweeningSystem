@@ -17,7 +17,7 @@ public class TestCode : MonoBehaviour
     void Start()
     {
         float duration = 2;
-        TweenMode tweenMode = TweenMode.Constant; //애니메이션 커브
+        Ease tweenMode = Ease.Constant; //애니메이션 커브
 
         gameObject.TweenMove(new Vector3(0, 1, 0), duration, tweenMode); // 이동
         gameObject.TweenRotate(new Vector3(0, 90, 0), duration, tweenMode); // 회전

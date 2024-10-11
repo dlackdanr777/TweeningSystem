@@ -2,10 +2,17 @@ using UnityEngine;
 
 namespace Muks.Tween
 {
-    public class TweenTransformMove : TweenData
+    public class TweenJump : TweenData
     {
         [SerializeField] private Vector3 _startPosition;
         [SerializeField] private Vector3 _targetPosition;
+
+        private float _jumpHelght;
+
+        internal void SetHeight(float height)
+        {
+            _jumpHelght = height;
+        }
 
 
         protected override void SetData(TweenDataSequence dataSequence)
@@ -21,7 +28,12 @@ namespace Muks.Tween
         {
             base.Update();
             float percent = _percentHandler[_tweenMode](ElapsedDuration, TotalDuration);
-            transform.position = Vector3.LerpUnclamped(_startPosition, _targetPosition, percent);
+            Vector3 currentPosition = Vector3.LerpUnclamped(_startPosition, _targetPosition, percent);
+
+            float parabola = 4 *_jumpHelght * percent * (1 - percent);
+            currentPosition.y = Mathf.LerpUnclamped(_startPosition.y, _targetPosition.y, percent) + parabola;
+
+            transform.position = currentPosition;
         }
 
 

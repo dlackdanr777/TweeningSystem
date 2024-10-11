@@ -23,13 +23,13 @@ public class TweenRotateTest : MonoBehaviour
 
     private void Start()
     {
-        _constantObj.TweenRotate(_targetAngles, _duration, TweenMode.Constant);
-        _quadraticObj.TweenRotate(_targetAngles, _duration, TweenMode.Quadratic);
-        _smoothstepObj.TweenRotate(_targetAngles, _duration, TweenMode.Smoothstep);
-        _spikeObj.TweenRotate(_targetAngles, _duration, TweenMode.Spike);
-        _easeOutExpoObj.TweenRotate(_targetAngles, _duration, TweenMode.EaseOutExpo);
-        _easeOutElasticObj.TweenRotate(_targetAngles, _duration, TweenMode.EaseOutElastic);
-        _easeOutBackObj.TweenRotate(_targetAngles, _duration, TweenMode.EaseOutBack);
-        _easeOutBounceObj.TweenRotate(_targetAngles, _duration, TweenMode.EaseOutBounce);
+        _constantObj.TweenRotate(_targetAngles, _duration, Ease.Constant);
+        _quadraticObj.TweenRotate(_targetAngles, _duration, Ease.InQuad);
+        _smoothstepObj.TweenRotate(_targetAngles, _duration, Ease.Smoothstep);
+        _spikeObj.TweenRotate(_targetAngles, _duration, Ease.Spike);
+        _easeOutExpoObj.TweenRotate(_targetAngles, _duration, Ease.OutExpo);
+        _easeOutElasticObj.TweenRotate(_targetAngles, _duration, Ease.OutElastic);
+        _easeOutBackObj.TweenRotate(_targetAngles, _duration, Ease.OutBack);
+        _easeOutBounceObj.TweenRotate(_targetAngles, _duration, Ease.OutBounce);
     }
 }

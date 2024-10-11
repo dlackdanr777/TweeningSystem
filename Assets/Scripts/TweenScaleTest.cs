@@ -22,13 +22,13 @@ public class TweenScaleTest : MonoBehaviour
 
     private void Start()
     {
-        _constantObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, TweenMode.Constant);
-        _quadraticObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, TweenMode.Quadratic);
-        _smoothstepObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, TweenMode.Smoothstep);
-        _spikeObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, TweenMode.Spike);
-        _easeOutExpoObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, TweenMode.EaseOutExpo);
-        _easeOutElasticObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, TweenMode.EaseOutElastic);
-        _easeOutBackObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, TweenMode.EaseOutBack);
-        _easeOutBounceObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, TweenMode.EaseOutBounce);
+        _constantObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, Ease.Constant);
+        _quadraticObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, Ease.InQuad);
+        _smoothstepObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, Ease.Smoothstep);
+        _spikeObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, Ease.Spike);
+        _easeOutExpoObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, Ease.OutExpo);
+        _easeOutElasticObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, Ease.OutElastic);
+        _easeOutBackObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, Ease.OutBack);
+        _easeOutBounceObj.TweenScale(new Vector3(1.7f, 1.7f, 1.7f), _duration, Ease.OutBounce);
     }
 }

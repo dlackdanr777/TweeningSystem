@@ -23,13 +23,13 @@ public class SizedeltaTest : MonoBehaviour
 
     private void Start()
     {
-        _constantObj.TweenSizeDelta(_targetSize, _duration, TweenMode.Constant);
-        _quadraticObj.TweenSizeDelta(_targetSize, _duration, TweenMode.Quadratic);
-        _smoothstepObj.TweenSizeDelta(_targetSize, _duration, TweenMode.Smoothstep);
-        _spikeObj.TweenSizeDelta(_targetSize, _duration, TweenMode.Spike);
-        _easeOutExpoObj.TweenSizeDelta(_targetSize, _duration, TweenMode.EaseOutExpo);
-        _easeOutElasticObj.TweenSizeDelta(_targetSize, _duration, TweenMode.EaseOutElastic);
-        _easeOutBackObj.TweenSizeDelta(_targetSize, _duration, TweenMode.EaseOutBack);
-        _easeOutBounceObj.TweenSizeDelta(_targetSize, _duration, TweenMode.EaseOutBounce);
+        _constantObj.TweenSizeDelta(_targetSize, _duration, Ease.Constant);
+        _quadraticObj.TweenSizeDelta(_targetSize, _duration, Ease.InQuad);
+        _smoothstepObj.TweenSizeDelta(_targetSize, _duration, Ease.Smoothstep);
+        _spikeObj.TweenSizeDelta(_targetSize, _duration, Ease.Spike);
+        _easeOutExpoObj.TweenSizeDelta(_targetSize, _duration, Ease.OutExpo);
+        _easeOutElasticObj.TweenSizeDelta(_targetSize, _duration, Ease.OutElastic);
+        _easeOutBackObj.TweenSizeDelta(_targetSize, _duration, Ease.OutBack);
+        _easeOutBounceObj.TweenSizeDelta(_targetSize, _duration, Ease.OutBounce);
     }
 }

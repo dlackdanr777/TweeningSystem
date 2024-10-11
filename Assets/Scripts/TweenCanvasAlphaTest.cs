@@ -10,7 +10,7 @@ public class TweenCanvasAlphaTest : MonoBehaviour
 
     private void Start()
     {
-        _canvasGroup.TweenAlpha(0, 3, TweenMode.Constant);
+        _canvasGroup.TweenAlpha(0, 3, Ease.Constant);
     }
 
 }

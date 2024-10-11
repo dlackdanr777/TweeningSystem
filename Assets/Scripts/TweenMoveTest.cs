@@ -2,6 +2,7 @@ using Muks.Tween;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class TweenMoveTest : MonoBehaviour
 {
@@ -23,15 +24,15 @@ public class TweenMoveTest : MonoBehaviour
     private void Start()
     {
 
-        TweenData tween = _constantObj.TweenMove(_constantObj.transform.position + new Vector3(10, 0, 0), _duration, TweenMode.Constant);
-        
+        TweenData tween = _constantObj.TweenMove(_constantObj.transform.position + new Vector3(10, 0, 0), _duration, Ease.Constant);
 
-        _quadraticObj.TweenMove(_quadraticObj.transform.position + new Vector3(10, 0, 0), _duration, TweenMode.Quadratic);
-        _smoothstepObj.TweenMove(_smoothstepObj.transform.position + new Vector3(10, 0, 0), _duration, TweenMode.Smoothstep);
-        _spikeObj.TweenMove(_spikeObj.transform.position + new Vector3(10, 0, 0), _duration, TweenMode.Spike);
-        _easeOutExpoObj.TweenMove(_easeOutExpoObj.transform.position + new Vector3(10, 0, 0), _duration, TweenMode.EaseOutExpo);
-        _easeOutElasticObj.TweenMove(_easeOutElasticObj.transform.position + new Vector3(10, 0, 0), _duration, TweenMode.EaseOutElastic);
-        _easeOutBackObj.TweenMove(_easeOutBackObj.transform.position + new Vector3(10, 0, 0), _duration, TweenMode.EaseOutBack);
-        _easeOutBounceObj.TweenMove(_easeOutBounceObj.transform.position + new Vector3(10, 0, 0), _duration, TweenMode.EaseOutBounce);
+
+        _quadraticObj.TweenMove(_quadraticObj.transform.position + new Vector3(10, 0, 0), _duration, Ease.InQuad);
+        _smoothstepObj.TweenMove(_smoothstepObj.transform.position + new Vector3(10, 0, 0), _duration, Ease.Smoothstep);
+        _spikeObj.TweenMove(_spikeObj.transform.position + new Vector3(10, 0, 0), _duration, Ease.Spike);
+        _easeOutExpoObj.TweenMove(_easeOutExpoObj.transform.position + new Vector3(10, 0, 0), _duration, Ease.OutExpo);
+        _easeOutElasticObj.TweenMove(_easeOutElasticObj.transform.position + new Vector3(10, 0, 0), _duration, Ease.OutElastic);
+        _easeOutBackObj.TweenMove(_easeOutBackObj.transform.position + new Vector3(10, 0, 0), _duration, Ease.OutBack);
+        _easeOutBounceObj.TweenMove(_easeOutBounceObj.transform.position + new Vector3(10, 0, 0), _duration, Ease.OutBounce);
     }
 }

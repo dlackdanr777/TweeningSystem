@@ -24,13 +24,13 @@ public class TweenImageColorTest : MonoBehaviour
 
     private void Start()
     {
-        _constantObj.TweenColor(_targetColor, _duration, TweenMode.Constant);
-        _quadraticObj.TweenColor(_targetColor, _duration, TweenMode.Quadratic);
-        _smoothstepObj.TweenColor(_targetColor, _duration, TweenMode.Smoothstep);
-        _spikeObj.TweenColor(_targetColor, _duration, TweenMode.Spike);
-        _easeOutExpoObj.TweenColor(_targetColor, _duration, TweenMode.EaseOutExpo);
-        _easeOutElasticObj.TweenColor(_targetColor, _duration, TweenMode.EaseOutElastic);
-        _easeOutBackObj.TweenColor(_targetColor, _duration, TweenMode.EaseOutBack);
-        _easeOutBounceObj.TweenColor(_targetColor, _duration, TweenMode.EaseOutBounce);
+        _constantObj.TweenColor(_targetColor, _duration, Ease.Constant);
+        _quadraticObj.TweenColor(_targetColor, _duration, Ease.InQuad);
+        _smoothstepObj.TweenColor(_targetColor, _duration, Ease.Smoothstep);
+        _spikeObj.TweenColor(_targetColor, _duration, Ease.Spike);
+        _easeOutExpoObj.TweenColor(_targetColor, _duration, Ease.OutExpo);
+        _easeOutElasticObj.TweenColor(_targetColor, _duration, Ease.OutElastic);
+        _easeOutBackObj.TweenColor(_targetColor, _duration, Ease.OutBack);
+        _easeOutBounceObj.TweenColor(_targetColor, _duration, Ease.OutBounce);
     }
 }
